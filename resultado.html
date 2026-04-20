@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado - InfoRegistral</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .confetti-container { position: fixed; inset: 0; pointer-events: none; z-index: 100; overflow: hidden; }
+        .confetti-piece { position: absolute; width: 10px; height: 10px; opacity: 0; }
+    </style>
+</head>
+<body>
+
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <div class="container-center" style="padding-top: 60px;">
+        <div class="result-card fade-in-up">
+            
+            <div class="result-status">
+                <i class="ph-fill ph-check-circle"></i>
+            </div>
+            
+            <h1 class="result-title">Pago Recibido Exitosamente</h1>
+            <p style="margin-bottom: 20px;">Estamos vinculando y protegiendo tu archivo PDF con los datos de:</p>
+            
+            <div class="result-patente" id="patente">ABC 123</div>
+
+            <div class="progress-track" id="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+
+            <div class="glass-panel scan-box" id="scan-box">
+                <div class="scan-item ok delay-1"><i class="ph-bold ph-check"></i> Verificando titularidad en base nacional...</div>
+                <div class="scan-item ok delay-2"><i class="ph-bold ph-check"></i> Compilando datos de patentes y embargos...</div>
+                <div class="scan-item warn delay-3"><i class="ph-bold ph-warning"></i> Cifrando contenido...</div>
+            </div>
+
+            <div class="unlock-box fade-in-up" id="unlock-box" style="display: none;">
+                <i class="ph-duotone ph-envelope-open" style="font-size: 40px; color: var(--accent-primary); margin-bottom: 10px;"></i>
+                <h3 style="color: #fff; margin-bottom: 10px; font-size: 20px;">Informe Solicitado y En Tránsito</h3>
+                <p>Todo está listo. Nuestro equipo te enviará el informe en formato electrónico directamente a tu casilla de correo dentro de 24 a 48 hs hábiles.</p>
+                <div style="margin-top: 20px; font-size: 13px; color: var(--text-muted);">
+                    ID Transacción: <span id="tx-id">Generando...</span>
+                </div>
+            </div>
+
+            <a href="index.html" class="btn-primary" style="margin-top: 20px; background: rgba(255,255,255,0.05); color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.1); box-shadow: none;">
+                Volver al inicio
+            </a>
+
+        </div>
+    </div>
+
+    <script>
+        const patenteResultado = localStorage.getItem("patente") || "VEHÍCULO";
+        document.getElementById("patente").innerText = patenteResultado;
+        document.getElementById("tx-id").innerText = "IR-" + Math.floor(Math.random() * 90000 + 10000) + "-WEB";
+
+        const scanItems = document.querySelectorAll('.scan-item');
+        let delay = 1000;
+        
+        scanItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.transition = "opacity 0.5s ease";
+                item.style.opacity = "1";
+            }, delay * (index + 0.5));
+        });
+
+        setTimeout(() => {
+            document.getElementById("progress-container").style.display = "none";
+            document.getElementById("scan-box").style.display = "none";
+            
+            const unlockBox = document.getElementById("unlock-box");
+            unlockBox.style.display = "block";
+            
+        }, delay * 3.5);
+    </script>
+
+</body>
+</html>

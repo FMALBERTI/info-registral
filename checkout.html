@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Confirmación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <div class="container-center">
+        <div class="glass-panel checkout-card fade-in-up">
+            
+            <div class="checkout-icon">
+                <i class="ph-duotone ph-invoice"></i>
+            </div>
+            
+            <h1 style="font-size: 22px; margin-bottom: 5px;">Confirmar solicitud</h1>
+            <p style="margin-bottom: 15px; font-size: 14px;">Estás a un paso de comenzar el trámite para el vehículo <strong id="patente" class="text-gradient"></strong>.</p>
+            
+            <div class="receipt">
+                <h3 style="font-size: 13px; color: var(--accent-primary); margin-bottom: 10px; text-transform: uppercase;">Detalle de Facturación</h3>
+                <div id="detalle" style="display:flex; flex-direction:column; gap: 8px;"></div>
+                
+                <div class="receipt-total">
+                    Total a pagar
+                    <span id="total" class="text-gradient"></span>
+                </div>
+            </div>
+
+            <label class="legal">
+                <input type="checkbox" id="terminos">
+                <span style="opacity: 0.8; line-height: 1.5;">
+                    Acepto los términos y condiciones. Brindo conformidad para la gestión privada del informe, entendiendo que el trámite puede realizarse mediante organismos oficiales.
+                </span>
+            </label>
+
+            <button onclick="pagar()" id="btn-pagar" class="btn-primary" style="font-size: 16px;">
+                Abonar Trámite <i class="ph-bold ph-credit-card"></i>
+            </button>
+
+            <div class="secure-badge">
+                <i class="ph-fill ph-check-circle"></i> Pago seguro verificado por MercadoPago
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script>
+        const patente = localStorage.getItem("patente");
+        const emailCliente = localStorage.getItem("email_cliente");
+        const cuitCliente = localStorage.getItem("cuit_cliente");
+        const total = parseInt(localStorage.getItem("total")) || 0;
+        const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
+
+        document.getElementById("patente").innerText = patente || "-";
+        
+        let detalleHtml = "";
+        servicios.forEach(s => {
+            detalleHtml += `<div class="receipt-row"><span>${s}</span> <strong>Incluido</strong></div>`;
+        });
+        document.getElementById("detalle").innerHTML = detalleHtml;
+        
+        document.getElementById("total").innerText = "$" + total.toLocaleString("es-AR");
+
+        function showToast(message, type="error") {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = `toast toast-${type}`;
+            const icon = type === "error" ? "ph-warning-circle" : "ph-check-circle";
+            toast.innerHTML = `<i class="ph-fill ${icon}"></i> <div>${message}</div>`;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.animation = "fadeOutRight 0.4s ease forwards";
+                setTimeout(() => toast.remove(), 400);
+            }, 4000);
+        }
+
+        function pagar() {
+            const aceptado = document.getElementById("terminos").checked;
+            const btn = document.getElementById("btn-pagar");
+
+            if(!aceptado){
+                showToast("Para continuar debés aceptar explícitamente los términos y condiciones.", "error");
+                return;
+            }
+
+            // UI feedback
+            btn.innerHTML = `Conectando con MercadoPago <i class="ph ph-spinner ph-spin"></i>`;
+            btn.style.opacity = "0.7";
+            btn.disabled = true;
+
+            fetch("/crear-pago", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    total: total,
+                    servicios: servicios,
+                    patente: patente,
+                    email_cliente: emailCliente,
+                    cuit: cuitCliente
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.url){
+                    window.location.href = data.url;
+                }else{
+                    showToast("Error en pasarela: " + (data.detalle || data.error), "error");
+                    btn.innerHTML = `Reintentar Pago <i class="ph-bold ph-credit-card"></i>`;
+                    btn.disabled = false;
+                    btn.style.opacity = "1";
+                }
+            })
+            .catch(() => {
+                showToast("Falla de conexión local. Verificá tu terminal Node.", "error");
+                btn.innerHTML = `Reintentar Pago <i class="ph-bold ph-credit-card"></i>`;
+                btn.disabled = false;
+                btn.style.opacity = "1";
+            });
+        }
+    </script>
+</body>
+</html>
