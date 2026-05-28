@@ -53,7 +53,7 @@ const enviarAvisoTelegram = async (mensaje) => {
 
 app.post('/crear-pago', async (req, res) => {
     try {
-        const { total, servicios, patente, email_cliente, cuit } = req.body;
+        const { total, servicios, patente, email_cliente, cuit, nombre, apellido, dni } = req.body;
 
         if (!total || !servicios || servicios.length === 0) {
             return res.status(400).json({ error: "Faltan datos requeridos (total o servicios)" });
@@ -74,6 +74,9 @@ app.post('/crear-pago', async (req, res) => {
                 patente: patente || '-',
                 email_cliente: email_cliente || '-',
                 cuit: cuit || '-',
+                nombre: nombre || '',
+                apellido: apellido || '',
+                dni: dni || '',
                 servicios: servicios ? servicios.join(', ') : '-'
             },
             back_urls: {
@@ -112,13 +115,23 @@ app.post('/webhook', async (req, res) => {
                 const monto = data.transaction_amount;
                 const email_mp = data.payer?.email || 'No provisto';
                 
-                const patente = data.metadata?.patente || '-';
+                const patente = data.metadata?.patente || '';
                 const emailCliente = data.metadata?.email_cliente || '-';
                 const cuitCliente = data.metadata?.cuit || '-';
+                const nombre = data.metadata?.nombre || '';
+                const apellido = data.metadata?.apellido || '';
+                const dni = data.metadata?.dni || '';
                 const serviciosPed = data.metadata?.servicios || '-';
                 
+                const infoPatente = patente ? `🚗  <b>Patente:</b> ${patente}\n` : '';
+                const nombreCompleto = (nombre || apellido) ? `${nombre} ${apellido}`.trim() : '';
+                const infoNombre = nombreCompleto ? `👤  <b>Nombre:</b> ${nombreCompleto}\n` : '';
+                const infoDni = dni ? `🆔  <b>DNI:</b> ${dni}\n` : '';
+                
                 const mensaje = `💰 <b>¡Nuevo Pago Aprobado!</b>\n\n` +
-                                `🚗  <b>Patente:</b> ${patente}\n` +
+                                infoPatente +
+                                infoNombre +
+                                infoDni +
                                 `📋  <b>Servicios:</b> ${serviciosPed}\n` +
                                 `📧  <b>Email (Form):</b> ${emailCliente}\n` +
                                 `👤  <b>CUIT/CUIL:</b> ${cuitCliente}\n` +
@@ -139,6 +152,14 @@ app.post('/webhook', async (req, res) => {
 
 // Sirve los archivos estáticos desde el mismo directorio
 app.use(express.static('./'));
+
+// Rutas para páginas SEO (clean URLs)
+const seoPages = ['informe-de-dominio', 'informe-nominal', 'informe-de-infracciones', 'informe-historico', 'informe-nominal-historico'];
+seoPages.forEach(page => {
+    app.get(`/${page}`, (req, res) => {
+        res.sendFile(`${page}/index.html`, { root: '.' });
+    });
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

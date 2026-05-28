@@ -3,25 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informe de Dominio Automotor Online | Info Registral</title>
-    <meta name="description" content="Consultá informes de dominio, nominales e infracciones online. Accedé al estado legal completo de cualquier vehículo de forma rápida y segura.">
-    <!-- Fuentes -->
+    <title>Informe de Infracciones y Multas | InfoRegistral</title>
+    <meta name="description" content="Consultá el Informe de Infracciones Automotor online. Accedé al historial completo de multas, deudas y scoring de cualquier vehículo. Gestión digital rápida.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <!-- Iconos Phosphor -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <!-- Estilos -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 
-    <!-- Orbes de fondo animados -->
     <div class="background-orbs">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
     </div>
 
     <header>
-        <a href="index.html" class="logo">
+        <a href="../index.html" class="logo">
             <i class="ph-fill ph-car-profile"></i> InfoRegistral
         </a>
         <button class="hamburger" id="hamburger" aria-label="Menú">
@@ -30,12 +26,12 @@
             <span></span>
         </button>
         <nav class="nav-menu" id="nav-menu">
-            <a href="index.html">Inicio</a>
-            <a href="informe-de-dominio/">Informe de Dominio</a>
-            <a href="informe-historico/">Informe Histórico</a>
-            <a href="informe-nominal/">Informe Nominal</a>
-            <a href="informe-nominal-historico/">Informe Nominal Histórico</a>
-            <a href="informe-de-infracciones/">Infracciones</a>
+            <a href="../index.html">Inicio</a>
+            <a href="../informe-de-dominio/">Informe de Dominio</a>
+            <a href="../informe-historico/">Informe Histórico</a>
+            <a href="../informe-nominal/">Informe Nominal</a>
+            <a href="../informe-nominal-historico/">Informe Nominal Histórico</a>
+            <a href="../informe-de-infracciones/">Infracciones</a>
         </nav>
         <div class="nav-overlay" id="nav-overlay"></div>
     </header>
@@ -43,9 +39,8 @@
     <section class="hero">
         <div class="hero-wrapper">
             <div class="hero-content fade-in-up">
-                <h1><span class="text-gradient">Informe de Dominio</span><br>Automotor Online</h1>
-                <p>Accedé al estado legal completo, titularidad, embargos e infracciones de cualquier vehículo al instante desde tu hogar.</p>
-                
+                <h1><span class="text-gradient">Informe de Infracciones</span><br>Automotor Online</h1>
+                <p>Consultá el historial completo de multas e infracciones de cualquier vehículo. Conocé deudas pendientes, puntos y estado del scoring.</p>
                 <div class="trust-badge">
                     <div class="trust-icon"><i class="ph-fill ph-shield-check"></i></div>
                     <div class="trust-text">Trámite 100% digital seguro<br><strong>Entrega en 24-48hs hábiles</strong></div>
@@ -55,7 +50,6 @@
             <div class="hero-form fade-in-up delay-1">
                 <div class="glass-panel form-box">
                     <form id="form">
-                        
                         <div class="form-grid">
                             <div class="input-wrapper" id="wrapper-patente">
                                 <i class="ph ph-identification-badge input-icon"></i>
@@ -84,17 +78,17 @@
                         </div>
 
                         <h3 style="margin-top: 5px; font-size: 15px; color: #fff;">Seleccioná los informes:</h3>
-                        
+
                         <div class="options-grid">
-                            <label class="check-card active">
-                                <input type="checkbox" class="servicio" value="12000" checked>
+                            <label class="check-card">
+                                <input type="checkbox" class="servicio" value="12000">
                                 <div class="check-info">
                                     <span class="check-title">Informe de dominio</span>
                                     <span class="check-price">$12.000</span>
                                 </div>
                                 <div class="check-indicator"></div>
                             </label>
-                            
+
                             <label class="check-card">
                                 <input type="checkbox" class="servicio" value="13000">
                                 <div class="check-info">
@@ -103,7 +97,7 @@
                                 </div>
                                 <div class="check-indicator"></div>
                             </label>
-                            
+
                             <label class="check-card">
                                 <input type="checkbox" class="servicio" value="8000">
                                 <div class="check-info">
@@ -122,8 +116,8 @@
                                 <div class="check-indicator"></div>
                             </label>
 
-                            <label class="check-card">
-                                <input type="checkbox" class="servicio" value="10000">
+                            <label class="check-card active">
+                                <input type="checkbox" class="servicio" value="10000" checked>
                                 <div class="check-info">
                                     <span class="check-title">Informe de infracciones</span>
                                     <span class="check-price">$10.000</span>
@@ -134,13 +128,13 @@
 
                         <div class="total-box">
                             <span>Total estimado:</span>
-                            <strong class="text-gradient" id="total">$12.000</strong>
+                            <strong class="text-gradient" id="total">$10.000</strong>
                         </div>
 
                         <button type="submit" class="btn-primary">
                             Continuar al pago <i class="ph-bold ph-arrow-right"></i>
                         </button>
-                        
+
                         <div style="text-align: center; margin-top: 15px; font-size: 11px; color: #666;">
                             <i class="ph-fill ph-lock-key"></i> Tus datos están protegidos bajo cifrado SSL.
                         </div>
@@ -151,66 +145,35 @@
     </section>
 
     <section class="pro-section reveal">
-        <h2 class="section-title">¿Cómo funciona?</h2>
-        <div class="steps">
-            <div class="step glass-panel">
-                <div class="step-icon"><i class="ph-fill ph-magnifying-glass"></i></div>
-                <h3>1. Buscá</h3>
-                <p style="margin-top: 10px; font-size: 14px;">Ingresás la patente del vehículo y elegís qué información requieres.</p>
+        <h2 class="section-title">¿Qué es un Informe de Infracciones Automotor?</h2>
+        <div style="display: flex; flex-direction: column; gap: 20px; max-width: 800px; margin: 0 auto;">
+            <div class="glass-panel" style="text-align: left; padding: 20px 24px;">
+                <p style="font-size: 14px; line-height: 1.7; color: #fff;">El Informe de Infracciones Automotor es un reporte detallado que consolida todas las multas, infracciones de tránsito, deudas por scoring y sanciones registradas contra un vehículo a nivel nacional y provincial. Al solicitar este informe con la patente del rodado, obtendrás un listado completo de las actas de infracción, el estado de cada una (pagada, pendiente, en recurso), los montos actualizados con intereses, y la situación del scoring del conductor. Es la herramienta definitiva para saber si un auto tiene deudas ocultas antes de comprarlo o transferirlo.</p>
             </div>
-            <div class="step glass-panel">
-                <div class="step-icon"><i class="ph-fill ph-gear"></i></div>
-                <h3>2. Procesamos</h3>
-                <p style="margin-top: 10px; font-size: 14px;">Nuestro sistema se conecta a las bases de datos para armar el legajo.</p>
-            </div>
-            <div class="step glass-panel">
-                <div class="step-icon"><i class="ph-fill ph-envelope-open"></i></div>
-                <h3>3. Recibís</h3>
-                <p style="margin-top: 10px; font-size: 14px;">En un plazo de 24-48hs recibes el informe oficial PDF en tu correo.</p>
+            <div class="glass-panel" style="text-align: left; padding: 20px 24px;">
+                <p style="font-size: 14px; line-height: 1.7; color: #fff;">En InfoRegistral procesamos tu solicitud de manera 100% online. Con solo ingresar la patente del vehículo y tu email, gestionamos la consulta ante las bases de datos oficiales de infracciones. En 24-48 horas hábiles recibís el informe completo en PDF con el detalle de todas las multas registradas, incluyendo las de CABA, provincia de Buenos Aires y el resto de las jurisdicciones del país. Ideal para compradores, vendedores, concesionarias y estudios jurídicos.</p>
             </div>
         </div>
     </section>
 
     <section class="pro-section reveal">
-        <h2 class="section-title">¿Qué información verificás?</h2>
-        <div class="verify-grid">
-            <div class="verify-card glass-panel">
-                <i class="ph-duotone ph-scales"></i>
-                <h4>Embargos</h4>
-                <p style="font-size: 13px;">Restricciones o litigios legales activos que impiden la libre transferencia.</p>
-            </div>
-            <div class="verify-card glass-panel">
-                <i class="ph-duotone ph-file-text"></i>
-                <h4>Prendas y Deudas</h4>
-                <p style="font-size: 13px;">Afectaciones financieras asociadas a la patente.</p>
-            </div>
-            <div class="verify-card glass-panel">
-                <i class="ph-duotone ph-user-list"></i>
-                <h4>Titularidad Actual</h4>
-                <p style="font-size: 13px;">Validación real de quién es el responsable y dueño registrado.</p>
-            </div>
-            <div class="verify-card glass-panel">
-                <i class="ph-duotone ph-clock-counter-clockwise"></i>
-                <h4>Radicación</h4>
-                <p style="font-size: 13px;">Registro automotor al cual pertenece la legajo físico actual.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="pro-section reveal">
-        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <h2 class="section-title">Preguntas Frecuentes sobre Infracciones y Multas</h2>
         <div class="faq">
             <div class="faq-item glass-panel">
-                <div class="faq-q">¿Qué informes puedo solicitar? <i class="ph-bold ph-caret-down"></i></div>
-                <div class="faq-a">En nuestro sitio web puedes solicitar los siguientes informes: Informe Dominio Automotor, Informe Dominio Histórico Automotor, Informe Multas Automotor, Informe Nominal Nacional, Informe Nominal Histórico Nacional e Informe de Anotaciones Personales. ¡Pídalo Ahora!</div>
+                <div class="faq-q">¿El informe incluye multas de todas las provincias? <i class="ph-bold ph-caret-down"></i></div>
+                <div class="faq-a">Sí, el Informe de Infracciones consolida multas registradas en todas las jurisdicciones del país, incluyendo CABA, provincia de Buenos Aires, Córdoba, Santa Fe, Mendoza y el resto de las provincias argentinas. Se consulta contra las bases de datos nacionales y provinciales disponibles.</div>
             </div>
             <div class="faq-item glass-panel">
-                <div class="faq-q">¿Tienen costo los informes? <i class="ph-bold ph-caret-down"></i></div>
-                <div class="faq-a">El trámite se puede realizar de forma personal en la DNRPA con valores de tarifas oficiales en su página. Lo que el usuario abona en nuestro sitio es el servicio que ofrecemos de asesoramiento y la realización del trámite por usted, así como lo puede hacer cualquier otro servicio de gestoría, o contabilidad. Obtener su Informe ahora!</div>
+                <div class="faq-q">¿Las multas aparecen con los intereses actualizados? <i class="ph-bold ph-caret-down"></i></div>
+                <div class="faq-a">Sí, cada infracción se informa con el monto original más los intereses y recargos vigentes a la fecha de la consulta. También se indica si la multa se encuentra prescripta, pagada, o en etapa de cobro judicial.</div>
             </div>
             <div class="faq-item glass-panel">
-                <div class="faq-q">¿Qué necesito para poder solicitar un Informe? <i class="ph-bold ph-caret-down"></i></div>
-                <div class="faq-a">La persona que desea realizar el trámite deberá tener DNI, Cuit o Cuil, y los datos del vehículo a solicitar. Nuestros formularios son simples y fáciles de completar ...</div>
+                <div class="faq-q">¿Qué es el scoring y aparece en el informe? <i class="ph-bold ph-caret-down"></i></div>
+                <div class="faq-a">El scoring es el sistema de puntaje del conductor. El informe incluye el estado actual del scoring asociado a la patente, los puntos disponibles y las infracciones que descontaron puntos. Esta información es clave para saber si el titular corre riesgo de suspensión de licencia.</div>
+            </div>
+            <div class="faq-item glass-panel">
+                <div class="faq-q">¿Las infracciones impiden la transferencia del vehículo? <i class="ph-bold ph-caret-down"></i></div>
+                <div class="faq-a">Sí, muchas jurisdicciones exigen que todas las multas estén pagadas para poder transferir el dominio. El Informe de Infracciones te permite conocer exactamente qué deudas existen y su monto actualizado para resolverlas antes de iniciar el trámite de transferencia.</div>
             </div>
         </div>
     </section>
@@ -226,7 +189,6 @@
     <div id="toast-container"></div>
 
     <script>
-        // Animaciones Reveal (Scroll)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -234,10 +196,9 @@
                 }
             });
         }, { threshold: 0.1 });
-        
+
         document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-        // Toasts
         function showToast(message, type="error") {
             const container = document.getElementById("toast-container");
             const toast = document.createElement("div");
@@ -251,20 +212,16 @@
             }, 4000);
         }
 
-        // Validación de Patente Mágica
         const patenteInput = document.getElementById("patente");
         patenteInput.addEventListener("input", function(e) {
             this.value = this.value.toUpperCase();
-            // Regex básico de patente mercosur o vieja
             const isValid = /^[A-Z]{3}\d{3}$|^[A-Z]{2}\d{3}[A-Z]{2}$/.test(this.value.replace(/\s+/g, ''));
-            
             let iconStatus = this.nextElementSibling;
             if(!iconStatus || !iconStatus.classList.contains('input-status-icon')) {
                 iconStatus = document.createElement("i");
                 iconStatus.className = "ph-bold ph-check input-status-icon";
                 this.parentNode.appendChild(iconStatus);
             }
-            
             if (isValid) {
                 iconStatus.classList.add("valid");
             } else {
@@ -272,7 +229,6 @@
             }
         });
 
-        // Animaciones UI de los Checkboxes
         const checkCards = document.querySelectorAll('.check-card');
         const checkboxes = document.querySelectorAll('.servicio');
         const totalEl = document.getElementById('total');
@@ -308,9 +264,15 @@
         checkboxes.forEach(c => {
             c.addEventListener('change', calcularTotal);
         });
-        
-        // Ejecutar calculo inicial por si hay definidos (ej html base)
+
         calcularTotal();
+
+        document.querySelectorAll('.faq-q').forEach(q => {
+            q.addEventListener('click', () => {
+                const parent = q.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
 
         // Hamburger Toggle
         const hamburger = document.getElementById('hamburger');
@@ -324,15 +286,6 @@
         hamburger.addEventListener('click', toggleMenu);
         navOverlay.addEventListener('click', toggleMenu);
 
-        // FAQ Toggle
-        document.querySelectorAll('.faq-q').forEach(q => {
-            q.addEventListener('click', () => {
-                const parent = q.parentElement;
-                parent.classList.toggle('active');
-            });
-        });
-
-        // Sumisión del form
         document.getElementById("form").addEventListener("submit", function(e) {
             e.preventDefault();
 
@@ -383,8 +336,7 @@
             localStorage.setItem("total", total);
             localStorage.setItem("servicios", JSON.stringify(servicios));
 
-            // Continuar al pago
-            window.location.href = "checkout.html";
+            window.location.href = "../checkout.html";
         });
     </script>
 </body>

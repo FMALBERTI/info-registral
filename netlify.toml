@@ -13,3 +13,29 @@
   to = "/.netlify/functions/webhook"
   status = 200
   force = true
+
+# Clean URLs para páginas SEO
+[[redirects]]
+  from = "/informe-de-dominio"
+  to = "/informe-de-dominio/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/informe-nominal"
+  to = "/informe-nominal/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/informe-de-infracciones"
+  to = "/informe-de-infracciones/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/informe-historico"
+  to = "/informe-historico/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/informe-nominal-historico"
+  to = "/informe-nominal-historico/index.html"
+  status = 200

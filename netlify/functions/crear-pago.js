@@ -12,7 +12,7 @@ export const handler = async (event) => {
         return { statusCode: 400, body: JSON.stringify({ error: 'Cuerpo de la solicitud inválido' }) };
     }
 
-    const { total, servicios, patente, email_cliente, cuit } = body;
+    const { total, servicios, patente, email_cliente, cuit, nombre, apellido, dni } = body;
 
     if (!total || !servicios || servicios.length === 0) {
         return { statusCode: 400, body: JSON.stringify({ error: 'Faltan datos requeridos (total o servicios)' }) };
@@ -41,6 +41,9 @@ export const handler = async (event) => {
                     patente: patente || '-',
                     email_cliente: email_cliente || '-',
                     cuit: cuit || '-',
+                    nombre: nombre || '',
+                    apellido: apellido || '',
+                    dni: dni || '',
                     servicios: servicios.join(', ')
                 },
                 back_urls: {

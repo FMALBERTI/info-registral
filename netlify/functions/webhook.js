@@ -41,14 +41,24 @@ export const handler = async (event) => {
             if (data.status === 'approved') {
                 const monto = data.transaction_amount;
                 const email_mp = data.payer?.email || 'No provisto';
-                const patente = data.metadata?.patente || '-';
+                const patente = data.metadata?.patente || '';
                 const emailCliente = data.metadata?.email_cliente || '-';
                 const cuitCliente = data.metadata?.cuit || '-';
+                const nombre = data.metadata?.nombre || '';
+                const apellido = data.metadata?.apellido || '';
+                const dni = data.metadata?.dni || '';
                 const serviciosPed = data.metadata?.servicios || '-';
+
+                const infoPatente = patente ? `🚗  <b>Patente:</b> ${patente}\n` : '';
+                const nombreCompleto = (nombre || apellido) ? `${nombre} ${apellido}`.trim() : '';
+                const infoNombre = nombreCompleto ? `👤  <b>Nombre:</b> ${nombreCompleto}\n` : '';
+                const infoDni = dni ? `🆔  <b>DNI:</b> ${dni}\n` : '';
 
                 const mensaje =
                     `💰 <b>¡Nuevo Pago Aprobado!</b>\n\n` +
-                    `🚗  <b>Patente:</b> ${patente}\n` +
+                    infoPatente +
+                    infoNombre +
+                    infoDni +
                     `📋  <b>Servicios:</b> ${serviciosPed}\n` +
                     `📧  <b>Email (Form):</b> ${emailCliente}\n` +
                     `👤  <b>CUIT/CUIL:</b> ${cuitCliente}\n` +

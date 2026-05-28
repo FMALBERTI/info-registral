@@ -58,6 +58,9 @@
         const patente = localStorage.getItem("patente");
         const emailCliente = localStorage.getItem("email_cliente");
         const cuitCliente = localStorage.getItem("cuit_cliente");
+        const nombreCliente = localStorage.getItem("nombre_cliente") || "";
+        const apellidoCliente = localStorage.getItem("apellido_cliente") || "";
+        const dniCliente = localStorage.getItem("dni_cliente") || "";
         const total = parseInt(localStorage.getItem("total")) || 0;
         const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
 
@@ -106,7 +109,10 @@
                     servicios: servicios,
                     patente: patente,
                     email_cliente: emailCliente,
-                    cuit: cuitCliente
+                    cuit: cuitCliente,
+                    nombre: nombreCliente,
+                    apellido: apellidoCliente,
+                    dni: dniCliente
                 })
             })
             .then(res => res.json())
