@@ -323,6 +323,9 @@
         }
         hamburger.addEventListener('click', toggleMenu);
         navOverlay.addEventListener('click', toggleMenu);
+        navMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', toggleMenu);
+        });
 
         // FAQ Toggle
         document.querySelectorAll('.faq-q').forEach(q => {

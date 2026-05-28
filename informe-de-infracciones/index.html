@@ -285,6 +285,9 @@
         }
         hamburger.addEventListener('click', toggleMenu);
         navOverlay.addEventListener('click', toggleMenu);
+navMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', toggleMenu);
+        });
 
         document.getElementById("form").addEventListener("submit", function(e) {
             e.preventDefault();
