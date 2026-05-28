@@ -77,11 +77,11 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 
 @media(max-width:1024px){
   .hamburger { display: flex; }
-  .nav-menu { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: var(--bg-card); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-left: 1px solid var(--border-light); flex-direction: column; padding: 100px 24px 30px; gap: 4px; transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1000; align-items: stretch; box-shadow: -10px 0 40px rgba(0,0,0,0.4); }
+  .nav-menu { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: rgba(5, 11, 20, 0.97); border-left: 1px solid var(--border-light); flex-direction: column; padding: 100px 24px 30px; gap: 4px; transition: right 0.25s ease; z-index: 1000; align-items: stretch; box-shadow: -10px 0 40px rgba(0,0,0,0.4); }
   .nav-menu.open { right: 0; }
   .nav-menu a { font-size: 15px; font-weight: 700; padding: 14px 18px; border-radius: 10px; border: 1px solid transparent; }
   .nav-menu a:hover { border-color: var(--border-accent); background: rgba(0, 212, 255, 0.06); }
-  .nav-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; display: none; backdrop-filter: blur(4px); }
+  .nav-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999; display: none; }
   .nav-overlay.open { display: block; }
 }
 
